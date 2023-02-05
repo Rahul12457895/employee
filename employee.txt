@@ -1,23 +1,25 @@
 import json
 class Employee:
-    
-    def emp_info(self,name,dob,height,city,state):
-        self.name= name
-        self.dob= dob
-        self.height= height
-        self.city= city
-        self.state= state
-        list=["name:",self.name, "dob:",self.dob, "height:",self.height, "city:",self.city, "state:",self.state]
+    def __init__(self):
+        self.dict={}
+        self.add= len(self.dict)+1
         
+    def emp_info(self):
+        self.name= input("enter your name: ")
+        self.dob= int(input("enter your dob: "))
+        self.height= int(input("enter your height: "))
+        self.city= input("enter your city: ")
+        self.state= input("enter your state: ")
+        list=[{"name": self.name, "dob": self.dob, "height": self.height, "city": self.city, "state": self.state}]
+        self.add= len(self.dict)+1
+        self.dict[self.add]= list
         with open("employee.json","w") as f:
-            json.dump(list,f)
-        return list
+            json.dump(self.dict,f)
+        return self.dict
               
 x= Employee()
-print("There are information of employees......")
-print(x.emp_info("rahul",4,145,"bhiwadi","rajasthan"))
-print(x.emp_info("gorav",5,195,"delhi","rajasthan"))
-print(x.emp_info("kartik",6,185,"gurugram","harayana"))
-print(x.emp_info("aman",7,195,"amritsar","punjab"))
-print(x.emp_info("chinu",8,122,"patiala","punjab"))
-print(x.emp_info("punu",9,133,"rewari","haryana"))
+print(x.emp_info())
+print(x.emp_info())
+print(x.emp_info())
+print(x.emp_info())
+print(x.emp_info())
